@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, FormControl } from "@angular/forms";
+import { FormBuilder, FormGroup, FormControl } from "@angular/forms"; //<==added this
 
 @Component({
   selector: "app-books",
@@ -8,12 +8,10 @@ import { FormBuilder, FormGroup, FormControl } from "@angular/forms";
 })
 export class BooksComponent implements OnInit {
   useBtn = false;
+  createBook: FormGroup;
   books = [];
 
-  createBook: FormGroup; //grabbing entire form and piping into a json format
-
   constructor(private fb: FormBuilder) {
-    //creating a new, private version of FormBuilder, called 'fb', only accessible within this class
     setTimeout(() => {
       this.useBtn = true;
     }, 3000);
@@ -28,7 +26,6 @@ export class BooksComponent implements OnInit {
       rating: new FormControl()
     });
   }
-
   onCreateBook() {
     this.books.push(this.createBook.value);
   }
